@@ -1,0 +1,24 @@
+*{
+  background-color: rgb(255, 254, 253);
+}
+.Header{
+color: black;
+text-align: center;
+font-size: medium;
+background-color: rgb(204, 112, 199);  
+}
+.Home{
+text-align: center;
+}
+.Login{
+  text-align: center;
+  }
+.Signup{
+    text-align: center;
+    }
+.linkcont{
+  width: 100%;
+  margin:40px;
+  justify-content: space-between;
+  align-items: center;
+}
