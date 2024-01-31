@@ -22,3 +22,8 @@ text-align: center;
   justify-content: space-between;
   align-items: center;
 }
+.sliderimg{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  }
