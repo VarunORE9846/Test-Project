@@ -16,3 +16,24 @@ text-align: center;
 .title{
     text-align: center;
 }
+.EP{
+    border:3px solid black;
+    margin-left: 50%;
+    margin-right:20%;
+    margin-top: 5%;
+}
+
+.eph{
+    align-items: center;
+    margin-right:22%;
+}
+.EPs{
+    border:3px solid black;
+    margin-left: 50%;
+    margin-right:20%;
+    margin-top: 20%;
+}
+.ephs{
+    align-items: center;
+    margin-right:22%;
+}
