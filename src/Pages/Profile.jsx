@@ -37,7 +37,7 @@ export const Profile = () => {
     const temp = [...users]
     let newArray = []
     for (let index = 0; index < temp.length; index++) {
-      if (index == e) {
+      if (index === e) {
         continue
       } else {
         newArray.push(temp[index])
@@ -65,7 +65,7 @@ export const Profile = () => {
       <input type="text" value={name} onChange={(e) => handleOnChangeValues(e)} name="name" placeholder='enter your name' />
       <label htmlFor="">Age:</label>
       <input type="number" value={age} onChange={(e) => handleOnChangeValues(e)} name="age" placeholder='enter your age' />
-      <button onClick={handleClick}>click Me</button>
+      <button onClick={handleClick}>Insert</button>
       <button onClick={resetLocalStorage}>Reset</button>
       {users.length > 0 &&
         <table class="table table-striped">
