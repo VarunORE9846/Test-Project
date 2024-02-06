@@ -7,6 +7,7 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
   const [users, setUsers] = useState([]);
+  // const [error, setError] = useState(false);
 
   // const [formData, setFormData] = useState([{
   //   username: "",
@@ -49,6 +50,7 @@ export const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let re = /\S+@\S+\.\S+/;
     // console.log(formData.username.length);
 
     if (username.length < 5) {
@@ -60,9 +62,14 @@ export const Signup = () => {
     //   setShow(true);
     //   // return;
     // }
-    let re = /\S+@\S+\.\S+/;
-    if (!(re.test(String(email).toLowerCase()))) {
+
+    else if (!(re.test(String(email).toLowerCase()))) {
       alert("invalid email format");
+      setShow(false);
+      return;
+    }
+    else if (users.filter(a => a.username === username).length > 0) {
+      alert("user already exists");
       setShow(false);
       return;
     }
@@ -70,7 +77,7 @@ export const Signup = () => {
     //   setShow(true);
     //   return;
     // }
-    if (!(password.length >= 8 && /\d/.test(password) && /[!@#$%^&*]/.test(password))) {
+    else if (!(password.length >= 8 && /\d/.test(password) && /[!@#$%^&*]/.test(password))) {
       alert("Invalid password format,Atleast one uppercase,lowercase Digit and special character are necessary");
       setShow(false);
       return;
@@ -79,7 +86,7 @@ export const Signup = () => {
     //   setShow(true);
     //   // return;
     // }
-    if (!(password === confirmpassword)) {
+    else if (!(password === confirmpassword)) {
       alert("passwords donot match");
       setShow(false);
       return;
@@ -87,8 +94,8 @@ export const Signup = () => {
     else {
       alert("Form submitted successfully");
       setShow(true);
+      handleStorage();
     }
-    handleStorage();
   };
   const handleStorage = () => {
     localStorage.setItem("SignupTable", JSON.stringify([...users, { username, email, password, confirmpassword }]));
@@ -102,7 +109,6 @@ export const Signup = () => {
   };
   useEffect(() => {
     const users = localStorage.getItem("SignupTable");
-    console.log(users);
     if (users) {
       setUsers(JSON.parse(users));
     }
@@ -147,8 +153,8 @@ export const Signup = () => {
           <button type="submit" className="btn btn-primary">Signup</button>
         </div>
         <div className='button'>
-        <button className="btn btn-primary" onClick={resetStorage}>Reset</button>
-      </div>
+          <button className="btn btn-primary" onClick={resetStorage}>Reset</button>
+        </div>
       </form>
       {/* {show && <div className="ephs">
         <div className='EPs'>

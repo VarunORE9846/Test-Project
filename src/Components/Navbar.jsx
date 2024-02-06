@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom"
-
+import React, { useEffect, useState } from "react"
+import { Link,useLocation } from "react-router-dom";
 const Navbar = () => {
+  const [loggedInUser, setLoggedInUser] = useState('');
+  const location=useLocation();
+  console.log(location.pathname);
+  useEffect(() => {
+    setLoggedInUser(localStorage.getItem("LoggedInUser"));
+  }, [location.pathname]);
   return (
 
     <nav className="navbar navbar-expand-lg bg-primary">
@@ -11,21 +17,33 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            {
+              loggedInUser ?
+              <>
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/" onClick={()=>localStorage.removeItem("LoggedInUser")}>Logout</Link>
+              </li>
+              <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/profile">Profile</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
-            </li> 
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/signup">Signup</Link>
-            </li>
-             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">Logout</Link>
+              <Link className="nav-link active" aria-current="page" to="/increement">Counter</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/increement">Increement</Link>
+              <Link className="nav-link active" aria-current="page" to="/Crud">CRUD</Link>
             </li>
+            </>
+            :
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/signup">Signup</Link>
+                </li>
+              </>
+            }
+
           </ul>
 
         </div>

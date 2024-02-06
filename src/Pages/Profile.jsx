@@ -1,96 +1,62 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import '../Pages/styles.css';
 export const Profile = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  // const [show, setShow] = useState(false);
-  const [users, setUsers] = useState([]);
-
-  const handleOnChangeValues = (e) => {
-    const { name, value } = e.target
-    if (name === "name") {
-      setName(value);
-    }
-    if (name === "age") {
-      setAge(value);
-    }
-
-  };
-  const handleClick = (e) => {
-    if (name.length < 2) {
-      alert("Please enter your name");
-      return;
-    }
-    if (age <= 0) {
-      alert("Please enter age correctly");
-      return;
-    }
-
-    localStorage.setItem("usersTable", JSON.stringify([...users, { name, age }]));
-    setUsers([...users, { name, age }])
-
-    setName("");
-    setAge(0);
-  };
-  const handleDelete = (e) => {
-    console.log(e);
-    const temp = [...users]
-    let newArray = []
-    for (let index = 0; index < temp.length; index++) {
-      if (index === e) {
-        continue
-      } else {
-        newArray.push(temp[index])
-      }
-    }
-    console.log(newArray);
-    localStorage.setItem("usersTable", JSON.stringify(newArray));
-    setUsers(newArray)
-  };
-  const resetLocalStorage = () => {
-    localStorage.removeItem("usersTable");
-    setUsers([]);
-  };
-  useEffect((e) => {
-    // e.preventdefault();
-    const users = localStorage.getItem("usersTable");
-    console.log(users)
-    if (users) {
-      setUsers(JSON.parse(users));
-    }
-  }, []);
   return (
-    <div>
-      <label htmlFor="">Name:</label>
-      <input type="text" value={name} onChange={(e) => handleOnChangeValues(e)} name="name" placeholder='enter your name' />
-      <label htmlFor="">Age:</label>
-      <input type="number" value={age} onChange={(e) => handleOnChangeValues(e)} name="age" placeholder='enter your age' />
-      <button onClick={handleClick}>Insert</button>
-      <button onClick={resetLocalStorage}>Reset</button>
-      {users.length > 0 &&
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">S. No.</th>
-              <th scope="col">Name</th>
-              <th scope="col">age</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((e, i) => (
-              <tr key={`${i}_row`}>
-                <th scope="row">{i + 1}</th>
-                <td>{e?.name}</td>
-                <td>{e?.age}</td>
-                <td><button onClick={() => handleDelete(i)}>delete</button></td>
-              </tr>
-            ))
-            }
-          </tbody>
-        </table>
-      }
-      {/* <h3>{name}</h3> */}
-    </div>
+    <>
+      <div className="page-content page-container" id="page-content">
+        <div className="padding">
+          <div className="row container d-flex justify-content-center">
+            <div className="col-xl-6 col-md-12">
+              <div className="card user-card-full">
+                <div className="row m-l-0 m-r-0">
+                  <div className="col-sm-4 bg-c-lite-green user-profile">
+                    <div className="card-block text-center text-white">
+                      <div className="m-b-25">
+                        <img src="https://img.icons8.com/bubbles/100/000000/user.png" className="img-radius" alt="User-Profile-Image" />
+                      </div>
+                      <h6 className="f-w-600">Varun Sharma</h6>
+                      <p>Web Designer</p>
+                      <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                    </div>
+                  </div>
+                  <div className="col-sm-8">
+                    <div className="card-block">
+                      <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                      <div className="row">
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Email</p>
+                          <h6 className="text-muted f-w-400">varun@gmail.com</h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Phone</p>
+                          <h6 className="text-muted f-w-400">9855855589</h6>
+                        </div>
+                      </div>
+                      <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                      <div className="row">
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Recent</p>
+                          <h6 className="text-muted f-w-400">Admin Panel</h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Most Viewed</p>
+                          <h6 className="text-muted f-w-400">Ecommerce Portal</h6>
+                        </div>
+                      </div>
+                      <ul className="social-link list-unstyled m-t-40 m-b-10">
+                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i className="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i className="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i className="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
-}
+};
 
