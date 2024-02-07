@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles.css';
 
 export const Login = () => {
-
-  // const [cred, setCred] = useState({  //DUMMIEE DATA
-  //   Email: "varun@gmail.com",
-  //   Password: "Welcome@123"
-  // })   
+  
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,20 +16,6 @@ export const Login = () => {
       setUsers(JSON.parse(users));
     }
   }, []);
-
-  // const handleOnChangeValues = (e) => {
-  //   const { name, value } = e.target
-  //   if (name === 'email') {
-  //     setEmail(value)
-  //   }
-  //   if  (name === "password") {
-  //     setPassword(value)
-  //   }
-  // };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log(email, password);
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
@@ -50,16 +32,7 @@ export const Login = () => {
     else { // if user doesnt exists 
       alert("user does not exist");
     }
-    // if (email === cred.Email && password === cred.Password) {
-    //   alert("Form submitted successfully");
-    //   setShow(true);
-    //   return;
-    // } else {
-    //   console.log('here');
-    //   alert("credentials don't match");
-    //   setShow(false)
-    //   return;
-    // }
+    
   };
 
   return (

@@ -184,5 +184,29 @@ p {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+.bts{
+    margin-top: 27%;
+    margin-left: 18%;
+
+}
+.btss{
+    justify-content:space-around;
+    margin-left: 10%;
+}
+.btn{
+    margin: 0% 5%;
+}
+ .inc{
+    font-size: 1200%;
+    margin-left:  45%;
+    margin-right:  45%;
+    margin-bottom: -18%;
+    margin-top: 5%;
+}
+
+.IFF{
+    justify-content: space-between;
+    margin: 5% 20%;
+}
 
 
