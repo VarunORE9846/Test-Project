@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import '../styles.css';
 
 export const Login = () => {
-  
-  const [users, setUsers] = useState([]);
+
+  const [userss, setUsers] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -19,10 +19,14 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('clicked');
-    const exist_user = users.filter(a => a.email === email); //[{}] this matches the data from login with the sign up table data
+    const exist_user = userss.filter(a => a.email === email); //[{}] this matches the data from login with the sign up table data
     if (exist_user.length > 0) { // if user exists 
       if (exist_user[0].password === password) {
-        localStorage.setItem("LoggedInUser",JSON.stringify(exist_user[0].username));
+        const userData = {
+          username: exist_user[0].username,
+          email: exist_user[0].email
+        };
+        localStorage.setItem("LoggedInUser", JSON.stringify(userData));
         navigate('/profile');
       }
       else {
@@ -32,7 +36,7 @@ export const Login = () => {
     else { // if user doesnt exists 
       alert("user does not exist");
     }
-    
+
   };
 
   return (
@@ -58,12 +62,12 @@ export const Login = () => {
           </div>
         </form>
       </div>
-      {show && <div className="eph">
+      {/* {show && <div className="eph">
         <div className='EP'>
           <h4>{email}</h4>
           <h5> {password}</h5>
         </div>
-      </div>}
+      </div>} */}
     </>
   )
 };

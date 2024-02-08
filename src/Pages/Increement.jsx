@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './styles.css';
-
+import Button from '../Components/button';
 export const Increement = () => {
 
   const [num, setNum] = useState(0);
@@ -21,24 +20,23 @@ export const Increement = () => {
     else {
       setNum((current_val) => current_val - 1);
     }
-
   };
 
   const reset = () => {
     setNum(0);
   };
-
+ 
   return (
     <>
       <div >
         <h1 className="inc">{num}</h1>
       </div>
       <div className="bts">
-        <div className="btss">
-          <button type="button" className="btn btn-success btn-lg" onClick={increement}>Increement</button>
-          <button type="button" className="btn btn-warning btn-lg" onClick={reset}>Reset</button>
-          <button type="button" className="btn btn-danger btn-lg" onClick={decreement}>Decreement</button>
-        </div>
+        <div className="btss">\
+          <Button title='Increement' color="success" handleClick={increement} />
+          <Button title='Reset' color="warning" handleClick={reset} />
+          <Button title='decreement' color="danger" handleClick={decreement} />
+          </div>
       </div>
     </>
   )

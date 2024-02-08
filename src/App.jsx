@@ -4,7 +4,7 @@ import { Home } from './Pages/Home';
 import { Login } from './Pages/auth/Login';
 import { Signup } from './Pages/auth/Signup';
 import { Increement } from './Pages/Increement';
-import { Crud } from './Pages/Crud';
+import   Crud   from './Pages/Crud';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoutes from './Utils/PrivateRoutes';
 import PublicRoutes from './Utils/PublicRoutes';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-export const Crud = () => {
+ const Crud = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   // const [show, setShow] = useState(false);
@@ -93,4 +93,6 @@ export const Crud = () => {
     </div>
   )
 }
+
+export default Crud
 

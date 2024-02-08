@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react"
 import { Link,useLocation } from "react-router-dom";
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
-  const location=useLocation();
-  console.log(location.pathname);
+  const location=useLocation(); 
   useEffect(() => {
-    setLoggedInUser(localStorage.getItem("LoggedInUser"));
+    const user = localStorage.getItem("LoggedInUser")
+    if (user) {
+      setLoggedInUser(JSON.parse(user))
+      
+    }
   }, [location.pathname]);
   return (
 
