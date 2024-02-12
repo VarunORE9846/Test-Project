@@ -17,7 +17,7 @@ export const Login = () => {
     }
   }, []);
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     console.log('clicked');
     const exist_user = userss.filter(a => a.email === email); //[{}] this matches the data from login with the sign up table data
     if (exist_user.length > 0) { // if user exists 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../Pages/styles.css';
+import '../Components/Profile.css'
 export const Profile = () => {
   const [userData, setUserData] = useState([]);
-
-
   useEffect(() => {
     const users = localStorage.getItem("LoggedInUser");
     console.log(users);
@@ -14,75 +12,90 @@ export const Profile = () => {
 
   return (
     <>
-      <div className="page-content page-container" id="page-content">
-        <div className="padding">
-          <div className="row container d-flex justify-content-center">
-            <div className="col-xl-6 col-md-12">
-              <div className="card user-card-full">
-                <div className="row m-l-0 m-r-0">
-                  <div className="col-sm-4 bg-c-lite-green user-profile">
-                    <div className="card-block text-center text-white">
-                      <div className="m-b-25">
-                        <img src="https://img.icons8.com/bubbles/100/000000/user.png" className="img-radius" alt="User-Profile" />
-                      </div>
-                      <h6 className="f-w-600">{userData.username}</h6>
-                      <p>Web Designer</p>
-                      <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                      <h6 className="f-w-600">Qualification:</h6>
-                      <p>BTech Computer science and Engineering</p>
-                      <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+      <section class="section about-section gray-bg" id="about">
+        <div class="container">
+          <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
+              <div class="about-text go-to">
+                <h3 class="dark-color">{userData.username}</h3>
+                <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
+                <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
+                <div class="row about-list">
+                  <div class="col-md-6">
+                    <div class="media">
+                      <label>Birthday</label>
+                      <p>4th april 1998</p>
+                    </div>
+                    <div class="media">
+                      <label>Age</label>
+                      <p>22 Yr</p>
+                    </div>
+                    <div class="media">
+                      <label>Residence</label>
+                      <p>Canada</p>
+                    </div>
+                    <div class="media">
+                      <label>Address</label>
+                      <p>California, USA</p>
                     </div>
                   </div>
-                  <div className="col-sm-8">
-                    <div className="card-block">
-                      <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                      <div className="row">
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Email</p>
-                          <h6 className="text-muted f-w-400">{userData?.email}</h6>
-                        </div>
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Phone</p>
-                          <h6 className="text-muted f-w-400">9855855589</h6>
-                        </div>
-                      </div>
-                      <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                      <div className="row">
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Recent</p>
-                          <h6 className="text-muted f-w-400">Admin Panel</h6>
-                        </div>
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Most Viewed</p>
-                          <h6 className="text-muted f-w-400">Ecommerce Portal</h6>
-                        </div>
-                      </div>
-                      <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Internships</h6>
-                      <div className="row">
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Recent</p>
-                          <h6 className="text-muted f-w-400">OrionEsolutions</h6>
-                        </div>
-                        <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Job Profile</p>
-                          <h6 className="text-muted f-w-400">SDE-Intern</h6>
-                        </div>
-                      </div>
-
-                      <ul className="social-link list-unstyled m-t-40 m-b-10">
-                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i className="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i className="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i className="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                      </ul>
+                  <div class="col-md-6">
+                    <div class="media">
+                      <label>E-mail</label>
+                      <p>{userData.email}</p>
+                    </div>
+                    <div class="media">
+                      <label>Phone</label>
+                      <p>820-885-3321</p>
+                    </div>
+                    <div class="media">
+                      <label>Skype</label>
+                      <p>skype.0404</p>
+                    </div>
+                    <div class="media">
+                      <label>Freelance</label>
+                      <p>Available</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="col-lg-6">
+              <div class="about-avatar">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt=""/>
+              </div>
+            </div>
+          </div>
+          <div class="counter">
+            <div class="row">
+              <div class="col-6 col-lg-3">
+                <div class="count-data text-center">
+                  <h6 class="count h2" data-to="500" data-speed="500">500</h6>
+                  <p class="m-0px font-w-600">Happy Clients</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3">
+                <div class="count-data text-center">
+                  <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                  <p class="m-0px font-w-600">Project Completed</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3">
+                <div class="count-data text-center">
+                  <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                  <p class="m-0px font-w-600">Photo Capture</p>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3">
+                <div class="count-data text-center">
+                  <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                  <p class="m-0px font-w-600">Telephonic Talk</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 };
-

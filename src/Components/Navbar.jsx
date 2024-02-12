@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react"
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
-  const location=useLocation(); 
+  const [isauth, setIsauth] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     const user = localStorage.getItem("LoggedInUser")
     if (user) {
       setLoggedInUser(JSON.parse(user))
-      
+      setIsauth(true);
     }
   }, [location.pathname]);
-  return (
 
+  const Logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("LoggedInUser");
+    setIsauth(false);
+    navigate('/');
+  }
+  return (
     <nav className="navbar navbar-expand-lg bg-primary">
       <div className="container-fluid">
         <a className="navbar-brand" href="admin">Admin Panel</a>
@@ -21,34 +29,40 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {
-              loggedInUser ?
-              <>
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/" onClick={()=>localStorage.removeItem("LoggedInUser")}>Logout</Link>
-              </li>
-              <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/profile">Profile</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/increement">Counter</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/Crud">CRUD</Link>
-            </li>
-            </>
-            :
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/signup">Signup</Link>
-                </li>
-              </>
+              loggedInUser && isauth?
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/" onClick={Logout}>Logout</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/profile">Profile</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/increement">Counter</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/Crud">CRUD</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/Usecontext">Usecontext</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/Calc">CalCustom</Link>
+                  </li> <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/CustomE">Employee Data</Link>
+                  </li>
+                </>
+                :
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/signup">Signup</Link>
+                  </li>
+                </>
             }
-
           </ul>
-
         </div>
       </div>
     </nav>

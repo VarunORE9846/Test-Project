@@ -31,8 +31,8 @@ export const Increement = () => {
       <div >
         <h1 className="inc">{num}</h1>
       </div>
-      <div className="bts">
-        <div className="btss">\
+      <div className="bits">
+        <div className="bitss">\
           <Button title='Increement' color="success" handleClick={increement} />
           <Button title='Reset' color="warning" handleClick={reset} />
           <Button title='decreement' color="danger" handleClick={decreement} />
