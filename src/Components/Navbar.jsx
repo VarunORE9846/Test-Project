@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import '../Pages/styles.css'
+import { Appstate } from "../App";
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
   const [isauth, setIsauth] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const County = useContext(Appstate);
   useEffect(() => {
     const user = localStorage.getItem("LoggedInUser")
     if (user) {
@@ -29,7 +32,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {
-              loggedInUser && isauth?
+              loggedInUser && isauth ?
                 <>
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/" onClick={Logout}>Logout</Link>
@@ -48,9 +51,11 @@ const Navbar = () => {
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/Calc">CalCustom</Link>
-                  </li> <li className="nav-item">
+                  </li>
+                  <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/CustomE">Employee Data</Link>
                   </li>
+                  <li><h4 id="redd">{County}</h4></li>
                 </>
                 :
                 <>

@@ -1,4 +1,5 @@
 // import Header from './Components/Header';
+import './Pages/styles.css'
 import Navbar from './Components/Navbar';
 import { Home } from './Pages/Home';
 import { Login } from './Pages/auth/Login';
@@ -14,43 +15,45 @@ import PublicRoutes from './Utils/PublicRoutes';
 import { Profile } from './Pages/Profile';
 import { Outlet } from "react-router-dom";
 import { createContext, useState } from 'react';
-
 const Appstate = createContext();
+const datastate = createContext();
+
 function App() {
-  const [data, setData] = useState({ Name: "varun sharma", Typehook: "This is an implementation of useContext Hook" });
+  const [num, setNum] = useState(0);
+
+  const sendNum = (num) => {
+    setNum(num);
+  }
+
+  const [data, setData] = useState({ Name: "varun sharma", Typehook: "This is an implementation of Usecontext hook" });
   return (
-    <>
-      {/* <Header />
-        <AppBar position='static'>
-        <Toolbar> */}
-      {/* <IconButton><LocalLibraryIcon/></IconButton> */}
+    <div>
+      <Appstate.Provider value={num}>
+        <datastate.Provider value={data}>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route element={<PublicRoutes><Outlet /></PublicRoutes>}>
+                <Route path='/login' element={<Login />} />
+                <Route path='/signup' element={<Signup />} />
+              </Route>
 
-      <Appstate.Provider value={data}>
-        <Router>
-          <Navbar />
-
-          <Routes>
-            <Route element={<PrivateRoutes> <Outlet /> </PrivateRoutes>}>
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/increement' element={<Increement />} />
-              <Route path='/Crud' element={<Crud />} />
-              <Route path='/Usecontext' element={<Usecontext />} />
-              <Route path='/Calc' element={<Calc />} />
-              <Route path='/CustomE' element={<CustomE />} />
-            </Route>
-            <Route exact path='/' element={<Home />} />
-            <Route element={<PublicRoutes><Outlet /></PublicRoutes>}>
-              <Route path='/login' element={<Login />} />
-              <Route path='/signup' element={<Signup />} />
-            </Route>
-          </Routes>
-        </Router>
+              <Route element={<PrivateRoutes> <Outlet /> </PrivateRoutes>}>
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/increement' element={<Increement sendNum={sendNum} />} />
+                <Route path='/Crud' element={<Crud />} />
+                <Route path='/Usecontext' element={<Usecontext />} />
+                <Route path='/Calc' element={<Calc />} />
+                <Route path='/CustomE' element={<CustomE />} />
+              </Route>
+            </Routes>
+          </Router>
+        </datastate.Provider>
       </Appstate.Provider>
-
-      {/* </Toolbar>
-        </AppBar> */}
-    </>
+    </div >
   );
 }
 export { Appstate };
+export { datastate };
 export default App;

@@ -1,18 +1,17 @@
 import React from 'react'
 import '../Pages/styles.css'
-import { Appstate } from '../App'
+import { datastate } from '../App'
 import { useContext } from 'react'
-
+//this page consists of implementation of usecontext,usememo,usecallback hooks
 export const Usecontext = () => {
-    const Appdata = useContext(Appstate);
+    const dataa = useContext(datastate);
     return (
         <>
-            {/* <h2>{Appdata.Name}</h2>
-            <h3>{Appdata.Typehook}</h3> */}
-            <div class="card" style={{width: "18rem"}}>
+
+            <div class="card" style={{ width: "18rem" }}>
                 <div class="card-body">
-                    <h3 class="card-title">{Appdata.Name}</h3>
-                    <h4 class="card-subtitle mb-2 text-muted">{Appdata.Typehook}</h4>
+                    <h3 class="card-title">{dataa.Name}</h3>
+                    <h4 class="card-subtitle mb-2 text-muted">{dataa.Typehook}</h4>
                     <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ex voluptates
                         fuga vero ratione nulla consectetur ad dolor, libero totam corporis hic doloremque aliquam quae et, autem,
                         reiciendis suscipit. Assumenda.

@@ -42,7 +42,7 @@ export const Calc = () => {
   // const reset = () => {
   //   setNum(0);
   // };
-
+  
   return (
     <>
       <div >

@@ -72,6 +72,16 @@
   margin: 5% 35%;
 }
 .tbody {
-margin-right: -0%;
+/* padding-left: 70%; */
+width: 15%;
 }
-
+#redd{
+  color: red;
+}
+.hor{
+  width: 100vw;
+  height:90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
