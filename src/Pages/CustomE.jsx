@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Hourglass } from 'react-loader-spinner'
 // import useFetch from '../Components/useFetch';
-import { ToastContainer, toast } from 'react-toastify'
+import {  toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import '../Pages/styles.css'
 

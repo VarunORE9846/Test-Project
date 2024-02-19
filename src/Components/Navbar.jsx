@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../Pages/styles.css'
-import { Appstate } from "../App";
+// import { Appstate } from "../App";
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
   const [isauth, setIsauth] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const County = useContext(Appstate);
+  // const County = useContext(Appstate);
   useEffect(() => {
     const user = localStorage.getItem("LoggedInUser")
     if (user) {
@@ -40,9 +40,9 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/profile">Profile</Link>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/increement">Counter</Link>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/Crud">CRUD</Link>
                   </li>
@@ -55,7 +55,13 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link className="nav-link active" aria-current="page" to="/CustomE">Employee Data</Link>
                   </li>
-                  <li><h4 id="redd">{County}</h4></li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/Movies">Movies List</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/Redux">Redux</Link>
+                  </li>
+                  {/* <li><h4 id="redd">{County}</h4></li> */}
                 </>
                 :
                 <>
